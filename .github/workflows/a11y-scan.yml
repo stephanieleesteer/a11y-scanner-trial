@@ -1,0 +1,21 @@
+name: Accessibility Scanner
+on: workflow_dispatch
+
+jobs:
+  accessibility_scanner:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: github/accessibility-scanner@v3
+        with:
+          urls: |
+            https://www.w3.org/WAI/demos/bad/before/home.html
+            https://www.w3.org/WAI/demos/bad/before/news.html
+            https://www.w3.org/WAI/demos/bad/before/tickets.html
+            https://www.w3.org/WAI/demos/bad/before/survey.html
+          repository: stephanieleesteer/a11y-scanner-trial
+          token: ${{ secrets.GH_TOKEN }}
+          cache_key: cached_results-w3c-bad-demo.json
+          skip_copilot_assignment: true
+          include_screenshots: true
+          group_by: rule
+          scans: '["axe", "accesslint", {"name": "alt-text-scan", "package": "@github/accessibility-scanner-alt-text-plugin", "version": "1.1.0"}]'
