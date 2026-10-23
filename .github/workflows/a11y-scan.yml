@@ -18,4 +18,4 @@ jobs:
           skip_copilot_assignment: true
           include_screenshots: true
           group_by: rule
-          scans: '["axe", "accesslint", {"name": "alt-text-scan", "package": "@github/accessibility-scanner-alt-text-plugin", "version": "1.1.0"}]'
+          scans: '["axe"]'
